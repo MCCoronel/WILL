@@ -6,13 +6,17 @@
 */
 function crearClasePersona() {
   class Persona {
-    constructor(nombre, edad, hobbies, amigos) {
+    constructor(nombre = "", edad = entero , hobbies, amigos) {
       // El constructor de la clase Persona recibe nombre (string), edad (integer), hobbies (array de strings), amigos (array de objetos)
       // Inicializar las propiedades de la persona con los valores recibidos como argumento
 
       // Tu código aca:
+      this.nombre = nombre
+      this.edad = edad
+      this.hobbies = hobbies
+      this.amigos = amigos
 
-    }
+    } 
 
     addFriend(nombre, edad) {
       // El método 'addFriend' recibe un string 'nombre' y un entero 'edad' y debe agregar un objeto:
@@ -20,14 +24,16 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
+       this.amigos.push({nombre : nombre , edad : edad})
+        
 
     }
 
     addHobby(hobby) {
       // El método 'addHobby' recibe un string 'hobby' y debe agregarlo al arreglo de hobbies de la persona.
       // No debe retornar nada.
-
       // Tu código aca:
+      this.hobbies.push(hobby);
 
     }
     getFriends() {
@@ -38,6 +44,8 @@ function crearClasePersona() {
       // persona.getFriends() debería devolver ['martin', 'toni']
 
       // Tu código aca:
+      let arr = this.amigos.map ( ele => ele.nombre);
+      return arr;
 
     }
 
@@ -47,6 +55,8 @@ function crearClasePersona() {
       // persona.getHobbies() debe devolver ['correr', 'dormir', 'nadar']
 
       // Tu código aca:
+        return this.hobbies;
+
 
     }
 
@@ -54,18 +64,12 @@ function crearClasePersona() {
       // El método 'getPromedioEdad' debe retornar el promedio de edad de los amigos de una persona
       // Ej:
       // Si la persona tuviera estos amigos:
-      // {
-      //   amigos: [{
-      //     nombre: 'toni',
-      //     edad: 33,
-      //   }, {
-      //     nombre: 'Emi',
-      //     edad: 25
-      //   }]
-      // }
+      // { amigos: [{  nombre: 'toni', edad: 33,}, {nombre: 'Emi', edad: 25 }]}
       // persona.getPromedioEdad() debería devolver 29 ya que (33 + 25) / 2 = 29
 
       // Tu código aca:
+        let promedio = this.amigos.map( elemento => elemento.edad).reduce((a,b) => a + b)/ this.amigos.length;
+        return promedio;
 
     }
   };
